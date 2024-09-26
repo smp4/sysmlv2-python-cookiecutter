@@ -1,0 +1,69 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "{{ cookiecutter.project_name }}"
+dynamic = ["version"]
+description = ''
+readme = "README.md"
+requires-python = ">=3.8"
+license = ""
+keywords = []
+authors = [
+  { name = "{{ cookiecutter.author }}", email = "{{ cookiecutter.email }}" },
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = []
+
+[project.urls]
+Documentation = "{{ cookiecutter.project_url }}#readme"
+Issues = "{{ cookiecutter.project_url }}/issues"
+Source = "{{ cookiecutter.project_url }}"
+
+[tool.hatch.version]
+path = "src/{{ cookiecutter.project_slug }}/__about__.py"
+
+[tool.hatch.envs.sysml]
+dependencies = [
+  "jupyter",
+]
+
+[tool.hatch.envs.sysml.scripts]
+update-kernel = "python3 ./sysml/jupyter-sysml-kernel/install.py --sys-prefix"
+
+[tool.hatch.envs.types]
+extra-dependencies = [
+  "mypy>=1.0.0",
+]
+[tool.hatch.envs.types.scripts]
+check = "mypy --install-types --non-interactive {args:src/{{ cookiecutter.project_slug }} tests}"
+
+[tool.coverage.run]
+source_pkgs = ["{{ cookiecutter.project_slug }}", "tests"]
+branch = true
+parallel = true
+omit = [
+  "src/{{ cookiecutter.project_slug }}/__about__.py",
+]
+
+[tool.coverage.paths]
+{{ cookiecutter.project_slug }} = ["src/{{ cookiecutter.project_slug }}", "*/{{ cookiecutter.project_slug }}/src/{{ cookiecutter.project_slug }}"]
+tests = ["tests", "*/{{ cookiecutter.project_slug }}/tests"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+]

@@ -1,0 +1,11 @@
+{
+    "author": "Your Name",
+    "email": "example@example.com",
+    "github_username": "example",
+    "project_name": "my-project",
+    "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
+    "project_short_description": "Contains the basics to create a sysmlv2 model with textual notation and Jupyter.",
+    "repo_url": "https://github.com/{{ cookiecutter.github_username.lower() }}/{{ cookiecutter.project_slug }}",
+    "_copy_without_render": [
+    ]
+}
