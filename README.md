@@ -62,19 +62,23 @@ The system model, written in the SysML v2 textual notation, lives in the `sysml`
 
 Any Python code written for analysis and/ or visualisation can either exist in Jupyter Notebooks, or as Python modules in `src` which are then called by the notebooks. The latter approach is preferred - it is more scalable and allows re-use.
 
-
-
 ```bash
 my-project
-├── src
+├── docs                        # Project documentation
+│   └── getting-started.md 
+├── src                         # Python analysis code
 │   └── my-project
 │       ├── __about__.py
 │       └── __init__.py
-├── tests
+├── sysml                       # SysML files, including system architecture files
+│   ├── jupyter-sysml-kernel    # Jupyter kernel files
+│   └── sysml.library           # SysML standard library
+├── tests                       # Placeholder for tests of Python code in src
 │   └── __init__.py
-├── README.md
-└── pyproject.toml
+├── README.md                   # Project readme
+└── pyproject.toml              # Python project configuration
 ```
+
 
 ## Philosophy
 
