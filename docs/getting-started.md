@@ -100,14 +100,19 @@ Finally, if you want to execute any Python code in your notebook, you will need 
 Happy system-as-code architecting!
 
 
-## Updating your project to use later versions of this template
-
-This cookiecutter template will be updated when the SysML standard library and the Jupyter SysML kernel from the Pilot Implementation are updated.
+## Updating your project
 
 To check for template updates and apply them, in the project root directory:
 
 ```bash
 cruft update
+```
+
+If the Jupyter SysML Kernel has been updated, you will need to re-install it in your Jupyter installation. A convenience command is available via `hatch` to do this:
+
+```bash
 hatch run sysml:update-kernel
 hatch run sysml:create-user-sysml-symlink
 ```
+
+This is the most convenient way to incorporate updates to the SysML standard library and Pilot Implementation Jupyter SysML kernel.

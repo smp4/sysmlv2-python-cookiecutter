@@ -45,18 +45,7 @@ Follow the [Getting Started](./docs/getting-started.md) instructions to set up V
 
 ## Updating an existing project
 
-This Cookiecutter template will be updated over time to include updates to the SysML v2 standard library and Pilot Implementation of the Jupyter SysML Kernel. To pull those updates into your project simply run the following in the project root directory:
-
-```bash
-cruft update
-```
-
-If the Jupyter SysML Kernel has been updated, you will need to re-install it in your Jupyter installation. A convenience command is available via `hatch` to do this:
-
-```bash
-hatch run sysml:update-kernel
-hatch run sysml:create-user-sysml-symlink
-```
+This Cookiecutter template will be updated over time to include updates to the SysML v2 standard library and Pilot Implementation of the Jupyter SysML Kernel. See [Updating your project](./docs/getting-started.md#updating-your-project) to pull those changes into your existing project.
 
 
 ## Project structure
