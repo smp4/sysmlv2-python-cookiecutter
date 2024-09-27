@@ -1,7 +1,6 @@
 # Advanced Setup
 
-!!! info
-    These instructions are also in the `docs/DEVELOPING.md` file of a freshly baked project.
+> These instructions are also in the `docs/DEVELOPING.md` file of a freshly baked project.
 
 Seasoned Pythonistas can probably figure out everything here themselves. These instructions are for everyone else,  in case you want to understand what is happening when you use the `update-kernel` and `create-user-sysml-symlink` commands, or want to tweak the setup yourself. 
 

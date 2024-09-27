@@ -1,7 +1,6 @@
 # Getting Started
 
-!!! info
-    These instructions are also in the `docs/DEVELOPING.md` file of a freshly baked project.
+> These instructions are also in the `docs/DEVELOPING.md` file of a freshly baked project.
 
 This article provides instructions on how to set up a SysML v2 development environment with Jupyter and VS Code.
 
