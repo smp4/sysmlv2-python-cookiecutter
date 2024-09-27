@@ -27,9 +27,9 @@ classifiers = [
 dependencies = []
 
 [project.urls]
-Documentation = "{{ cookiecutter.project_url }}#readme"
-Issues = "{{ cookiecutter.project_url }}/issues"
-Source = "{{ cookiecutter.project_url }}"
+Documentation = "{{ cookiecutter.repo_url }}#readme"
+Issues = "{{ cookiecutter.repo_url }}/issues"
+Source = "{{ cookiecutter.repo_url }}"
 
 [tool.hatch.version]
 path = "src/{{ cookiecutter.project_slug }}/__about__.py"
