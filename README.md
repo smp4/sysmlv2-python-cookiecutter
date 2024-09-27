@@ -40,7 +40,7 @@ cruft create https://github.com/smp4/sysmlv2-python-cookiecutter
 
 You will then be asked a series of questions to create the project. Enter the new project directory and continue with the Getting Started instructions in `docs/getting-started.md`. You now have a project.
 
-Following the [Getting Started](./docs/getting-started.md) instructions to set up VS Code and Jupyter development environment.
+Follow the [Getting Started](./docs/getting-started.md) instructions to set up VS Code and Jupyter development environment.
 
 
 ## Updating an existing project
@@ -116,12 +116,6 @@ Visualisation is achieved with the Jupyter sysml kernel `%viz` magic function wh
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-## Developing this template
-
-Update the `sysml/sysml.library` standard library and `sysml/jupyter-sysml-kernel` Pilot Implementation Jupyter Kernel per the manual instructions in `docs/getting-started.md`.
-
-Push to the template repository.
 
 
 ## Licensing

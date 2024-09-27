@@ -1,5 +1,11 @@
 # Developing
 
+## Updating SysML standard library and Jupyter SysML kernel
+
+Follow the manual instructions in `docs/advanced-setup.md`.
+
+Push to the template repository.
+
 ## Creating a release
 
 **Create a Changelog fragment with every noteworthy change:**
