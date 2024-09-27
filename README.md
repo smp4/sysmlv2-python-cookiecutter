@@ -38,7 +38,9 @@ Create the new project:
 cruft create https://github.com/smp4/sysmlv2-python-cookiecutter
 ```
 
-You will then be asked a series of questions to create the project. Enter the new project directory and continue with the Getting Started instructions in `docs/getting-started.md`.
+You will then be asked a series of questions to create the project. Enter the new project directory and continue with the Getting Started instructions in `docs/getting-started.md`. You now have a project.
+
+Following the [Getting Started](./docs/getting-started.md) instructions to set up VS Code and Jupyter development environment.
 
 
 ## Updating an existing project
@@ -53,29 +55,30 @@ If the Jupyter SysML Kernel has been updated, you will need to re-install it in 
 
 ```bash
 hatch run sysml:update-kernel
+hatch run sysml:create-user-sysml-symlink
 ```
 
 
 ## Project structure
 
-The system model, written in the SysML v2 textual notation, lives in the `sysml` directory.
+Your system models, written in the SysML v2 textual notation, lives in the `sysml` directory.
 
 Any Python code written for analysis and/ or visualisation can either exist in Jupyter Notebooks, or as Python modules in `src` which are then called by the notebooks. The latter approach is preferred - it is more scalable and allows re-use.
 
 ```bash
 my-project
-├── docs                        # Project documentation
-│   └── getting-started.md 
-├── src                         # Python analysis code
-│   └── my-project
+├── docs                        # Write documentation for your project here
+├── src                         
+│   └── my-project              # Placeholder for Python code, if you need it
 │       ├── __about__.py
 │       └── __init__.py
 ├── sysml                       # SysML files, including system architecture files
-│   ├── jupyter-sysml-kernel    # Jupyter kernel files
+│   ├── jupyter-sysml-kernel    # Jupyter kernel source files from Pilot Implementation
+│   ├── models                  # This is where you put your SysML models
 │   └── sysml.library           # SysML standard library
 ├── tests                       # Placeholder for tests of Python code in src
 │   └── __init__.py
-├── README.md                   # Project readme
+├── README.md
 └── pyproject.toml              # Python project configuration
 ```
 
@@ -90,14 +93,6 @@ Objectives:
 - Optionally perform system analysis with Python.
 - Do all of the above within a single free, mature tool - VS Code, including all of the extensions it already brings.
 
-**SysML v2 API**
-
-The SysML v2 API is not implemented. The objective of the API is to support central, tool-agnostic repositories to host a SysML v2 model, and serve it to tool-specific clients. 
-
-In the system-as-code paradigm, our central repository is simply a Git client (GitHub, GitLab or similar). Users then use normal git workflows to collaborate. All modelling is done using the SysML v2 textual notation (code). 
-
-Visualisation is achieved with the Jupyter sysml kernel `%viz` magic function which calls out to `graphviz`.
-
 **Why Python**
 
 There is no rule that a system architecture modelled with SysML v2 needs to be developed within a Python project, nor that the analysis needs to be done using Python. You can use whatever language and tooling you want. 
@@ -107,6 +102,15 @@ This repo simply uses Python because it is convenient:
 - We need Python (and a Python virtual environment) anyway to install the `jupyter` Python package, which we need in order to have Jupyter, which we need in order to have the Jupyter SysML Kernel. 
 - A lot of engineers are already familiar with Python. 
 - Structuring the project in a popular language allows us to use the tools of that ecosystem to help us with our development (collaboration, testing, etc workflows).
+
+**SysML v2 API**
+
+The SysML v2 API is not implemented. The objective of the API is to support central, tool-agnostic repositories to host a SysML v2 model, and serve it to tool-specific clients. 
+
+In the system-as-code paradigm, our central repository is simply a Git client (GitHub, GitLab or similar). Users then use normal git workflows to collaborate. All modelling is done using the SysML v2 textual notation (code). 
+
+Visualisation is achieved with the Jupyter sysml kernel `%viz` magic function which calls out to `graphviz`.
+
 
 
 ## Contributing
@@ -139,7 +143,7 @@ Copyright © 2021-2023 Twingineer LLC
 
 Other, original, code in this repository is provided for use under the [MIT License](https://choosealicense.com/licenses/mit/).
 
+# Roadmap
 
-## Future Work
-
-- `sysml.library` is duplicated in the kernel directory?
+- Provide advice for a workflow with [SysON](https://mbse-syson.org/) for visualisation and collaboration with users more comfortable authoring in the graphical notation.
+- SysIDE Pro

@@ -4,15 +4,14 @@
 
 See [Make a README](https://www.makeareadme.com/) for a good `README`.
 
-## Installation
-
-See [Getting Started](./docs/getting-started.md).
-
+## Getting started
 
 ## Usage
 
 ## Support
 
-## Contributing
+## Development
+
+To set up a SysML development environment with this project, VS Code and Jupyter, see [developing.md](./docs/developing.md).
 
 ## License

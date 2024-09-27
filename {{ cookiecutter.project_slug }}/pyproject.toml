@@ -35,12 +35,14 @@ Source = "{{ cookiecutter.repo_url }}"
 path = "src/{{ cookiecutter.project_slug }}/__about__.py"
 
 [tool.hatch.envs.sysml]
+path = "./venv"
 dependencies = [
   "jupyter",
 ]
 
 [tool.hatch.envs.sysml.scripts]
 update-kernel = "python3 ./sysml/jupyter-sysml-kernel/install.py --sys-prefix"
+create-user-sysml-symlink = "cd .venv/sysml/share/jupyter/kernels/sysml/sysml.library/Domain\ Libraries && ln -sFf ../../../../../../../../sysml/model user_models"
 
 [tool.hatch.envs.types]
 extra-dependencies = [

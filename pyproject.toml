@@ -1,0 +1,104 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "sysmlv2-python-cookiecutter"
+version = "0.0.1"
+description = ''
+readme = "README.md"
+requires-python = ">=3.8"
+license = "MIT, LGPL, GPL"
+keywords = []
+authors = [
+  { name = "sean", email = "sean-smp4@protonmail.com" },
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = []
+
+[project.urls]
+Documentation = "https://github.com/smp4/sysmlv2-python-cookiecutter#readme"
+Issues = "https://github.com/smp4/sysmlv2-python-cookiecutter/issues"
+Source = "https://github.com/smp4/sysmlv2-python-cookiecutter"
+
+
+[tool.hatch.envs.default]
+dependencies = [
+]
+
+
+#### DOCS ####
+
+[tool.hatch.envs.docs]
+dependencies = [
+  "mkdocs-material",
+  "mkdocs-git-revision-date-localized-plugin",
+  "mkdocs-git-authors-plugin",
+  "mkdocs-glightbox",
+  "scriv",
+]
+[tool.hatch.envs.docs.scripts]
+new = "mkdocs new ."
+build = "mkdocs build --strict --clean --verbose"
+buildtest = "mkdocs build --strict --clean --verbose --site-dir doctest"
+serve = "mkdocs serve --dev-addr localhost:8000"
+
+[tool.scriv]
+format = "md"
+new_fragment_template = "file: new_fragment_custom.md.j2"
+version = "literal: pyproject.toml: project.version"
+entry_title_template = "v{% if version %}{{ version }} — {% endif %}{{ date.strftime('%Y-%m-%d') }}"
+
+#### TYPING ####
+
+[tool.hatch.envs.types]
+extra-dependencies = [
+  "mypy>=1.0.0",
+]
+[tool.hatch.envs.types.scripts]
+check = "mypy --install-types --non-interactive {args:src/sysmlv2-python-cookiecutter tests}"
+
+
+#### LINTING ####
+
+# hatch now has a default "hatch-static-analysis" environment. 
+
+#### TESTING #### 
+
+# hatch now has a default "hatch-test" environment. The user does not need to create a 
+# custom environment. Set some extra settings:
+
+[tool.hatch.envs.hatch-test]
+randomize = true
+parallel = true
+
+# default settings from hatch inititialisation
+
+[tool.coverage.run]
+source_pkgs = ["sysmlv2-python-cookiecutter", "tests"]
+branch = true
+parallel = true
+omit = [
+  "src/ohb_python_cookiecutter/__about__.py",
+]
+
+[tool.coverage.paths]
+ohb_python_cookiecutter = ["src/ohb_python_cookiecutter", "*/ohb-python-cookiecutter/src/ohb_python_cookiecutter"]
+tests = ["tests", "*/ohb-python-cookiecutter/tests"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+]
