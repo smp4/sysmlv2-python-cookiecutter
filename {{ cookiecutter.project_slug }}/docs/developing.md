@@ -62,6 +62,8 @@ hatch run sysml:update-kernel
 hatch run sysml:create-user-sysml-symlink
 ```
 
+Running either of these commands will also trigger `hatch` to create the `sysml` Python virtual environment  if it doesn't exist already.
+
 
 ### VS Code: SysIDE CE extension
 
@@ -73,7 +75,7 @@ Instead, it is cleaner to have the library installed per project, so that differ
 
 When asked, direct the extension to use the SysML standard library in your project folder at `./sysml/sysml.library`. Set this as a *Workspace* (that is, project-only) setting. Do not create a User setting for this, in case you want to use different standard library versions in different projects later. 
 
-If you need to reset the path location, search for the extension setting `Syside: Standard Library Path` then disable, restart, then re-enable the extension. It should provide the popup to locate the library again.
+If you need to reset the path location, search for the extension setting `Syside: Standard Library Path` then disable, restart, then re-enable the extension. It should provide the popup to locate the library again. Enter the path relative to the project root directory, in the VS Code workspace settings.
 
 
 ### VS Code: Jupyter extension
@@ -90,13 +92,15 @@ This file is a very basic SysML model written in the SysML v2 textual notation. 
 
 To visualise the model, open the command pallette in VS Code (the search field at the top of the window), type `>Create new jupyter notebook`. 
 
-Next, select the SysML kernel. In the top right corner click "Select Kernel" and select `SysML (sysml)`. the kernel will start up, loading the SysML standard library and our user model at `./sysml/models/mymodel.sysml`.
+You may be prompted to select a Python interpreter. Select the Python binary in the `sysml` virtual environment. If your project hasn't modified this template, it will be at `./.venv/sysml/bin/Python`. This requires the virtual environment to be created, which should have happened when you ran the `hatch` commands above. If not, run `hatch env create sysml`.
+
+Next, select the SysML kernel. In the top right corner click "Select Kernel" > Jupyter Kernel, and select `SysML (sysml)`. the kernel will start up, loading the SysML standard library and our user model at `./sysml/models/mymodel.sysml`.
 
 Create a new code cell in the notebook and type `%viz --view=interconnection "PictureTaking"`. This uses the `%viz` "magic" command that comes built in to the Jupyter SysML kernel to call out to Graphviz and generate a figure of our model from our sysml code. Execute the cell and you should see the model as a diagram.
 
 Whenever you update your sysml code in `./sysml/models/`, you **must** restart the sysml kernel in your notebook to force the kernel to ingest the new code before you can access it in the notebook.
 
-Finally, if you want to execute any Python code in your notebook, you will need to add a Python based kernel. We can use the `sysml` Python virtual environment for this. To do so, click the kernel selector button and select the Python option, which probably looks something like `sysml (Python 3.x) .venv/sysml/bin/python` option.
+Finally, if you want to execute any Python code in your notebook, you will need to add a Python based kernel. We can use the `sysml` Python virtual environment for this. To do so, click the kernel selector button and select the "Python Environments" option, then find the `sysml` virtual environment which probably looks something like `sysml (Python 3.x) .venv/sysml/bin/python`.
 
 Happy system-as-code architecting!
 
