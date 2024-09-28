@@ -64,6 +64,20 @@ hatch run sysml:create-user-sysml-symlink
 
 Running either of these commands will also trigger `hatch` to create the `sysml` Python virtual environment  if it doesn't exist already.
 
+Verify the sysml kernel was installed:
+
+```bash
+hatch -e sysml run jupyter-kernelspec list
+```
+
+Should see python3 from the `sysml` virtual environment, and sysml listed.
+
+Verify the `user_models` symlink points up to the `models` directory:
+
+```bash
+ls -al ./.venv/sysml/share/jupyter/kernels/sysml/sysml.library/Domain\ Libraries
+```
+
 
 ### VS Code: SysIDE CE extension
 
@@ -92,9 +106,9 @@ This file is a very basic SysML model written in the SysML v2 textual notation. 
 
 To visualise the model, open the command pallette in VS Code (the search field at the top of the window), type `>Create new jupyter notebook`. 
 
-You may be prompted to select a Python interpreter. Select the Python binary in the `sysml` virtual environment. If your project hasn't modified this template, it will be at `./.venv/sysml/bin/Python`. This requires the virtual environment to be created, which should have happened when you ran the `hatch` commands above. If not, run `hatch env create sysml`.
+You may be prompted to select a Python interpreter. Select the Python binary in the `sysml` virtual environment (no problem if not). If your project hasn't modified this template, it will be at `./.venv/sysml/bin/Python`. This requires the virtual environment to be created, which should have happened when you ran the `hatch` commands above. If not, run `hatch env create sysml`.
 
-Next, select the SysML kernel. In the top right corner click "Select Kernel" > Jupyter Kernel, and select `SysML (sysml)`. the kernel will start up, loading the SysML standard library and our user model at `./sysml/models/mymodel.sysml`.
+Next, select the SysML kernel. In the top right corner click "Select Kernel" > Jupyter Kernel, and select `SysML (sysml)`. The kernel will start up, loading the SysML standard library and our user model at `./sysml/models/mymodel.sysml`.
 
 Create a new code cell in the notebook and type `%viz --view=interconnection "PictureTaking"`. This uses the `%viz` "magic" command that comes built in to the Jupyter SysML kernel to call out to Graphviz and generate a figure of our model from our sysml code. Execute the cell and you should see the model as a diagram.
 
